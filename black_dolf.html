@@ -1,0 +1,1035 @@
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Churros Band — Горячо. Вкусно. Музыкально.</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 6 l10 28 30 2 -23 18 8 29 -25 -17 -25 17 8 -29 -23 -18 30 -2 z' fill='%23d8d3c6'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Neucha&display=swap" rel="stylesheet">
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --bg:#262522; --bg2:#2d2c28; --panel:#1e1d1a; --panel2:#222019;
+  --paper:#d8d3c6; --paper2:#cec9bb; --ink:#211f1c;
+  --txt:#cdc9be; --mut:#8f8c82; --line:rgba(216,211,198,.14);
+  --gold:#b08247; --gold2:#d3ac67; --choc:#171009;
+  --serif:'Neucha',cursive; --sans:'Inter',system-ui,sans-serif;
+  --noise:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  --squig:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='14' viewBox='0 0 220 14'%3E%3Cpath d='M4 8 q11 -8 22 0 t22 0 t22 0 t22 0 t22 0 t22 0 t22 0 t22 0 t22 0' fill='none' stroke='%23b3aea2' stroke-width='3.5' stroke-linecap='round' opacity='0.8'/%3E%3C/svg%3E");
+  --torn:polygon(0% 2.2%,3.5% 0.6%,7% 2%,11% 0.4%,16% 1.8%,21% 0.5%,27% 1.9%,33% 0.6%,39% 1.7%,45% 0.5%,51% 2%,57% 0.7%,63% 1.8%,69% 0.5%,75% 1.9%,81% 0.6%,87% 2%,93% 0.7%,97% 1.8%,100% 2.6%,99.2% 10%,100% 18%,98.8% 27%,99.8% 36%,98.9% 45%,100% 54%,98.8% 63%,99.8% 72%,98.9% 81%,100% 90%,99% 97.2%,95% 99%,90.5% 97.6%,85% 99.2%,79.5% 97.7%,74% 99.1%,68.5% 97.7%,63% 99.2%,57.5% 97.8%,52% 99.1%,46.5% 97.7%,41% 99.2%,35.5% 97.8%,30% 99.1%,24.5% 97.7%,19% 99.2%,13.5% 97.8%,8% 99.1%,3.5% 97.7%,0.4% 99%,0% 95.4%,1% 87%,0% 78%,1.1% 69%,0% 60%,1% 51%,0% 42%,1.1% 33%,0% 24%,1% 15%,0% 7%);
+  --hand:255px 15px 225px 15px/15px 225px 15px 255px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--sans);font-size:16px;line-height:1.6;color:var(--txt);
+  background:
+    radial-gradient(1200px 620px at 82% -10%,rgba(255,255,255,.035),transparent 60%),
+    radial-gradient(900px 520px at 8% 112%,rgba(0,0,0,.28),transparent 60%),
+    var(--bg);
+  overflow-x:hidden;
+}
+body::before{content:"";position:fixed;inset:0;background-image:var(--noise);opacity:.26;mix-blend-mode:overlay;pointer-events:none;z-index:9000}
+::selection{background:var(--paper);color:var(--ink)}
+:focus-visible{outline:2px dashed #8f8c82;outline-offset:3px}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+section{scroll-margin-top:96px}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:400}
+
+/* ============ SHARED ============ */
+.kicker{font-size:.7rem;letter-spacing:.32em;text-transform:uppercase;color:var(--mut);margin-bottom:.9rem}
+.h2{font-size:clamp(2.4rem,5vw,3.7rem);line-height:1.05;color:var(--paper);display:inline-block;transform:rotate(-1.1deg);background:url(var(--squig)) left bottom/48% 12px no-repeat;padding-bottom:16px}
+.sec{padding:clamp(4.5rem,9vw,7.5rem) clamp(1.1rem,4.5vw,4.5rem);position:relative}
+.sec-head{display:flex;flex-wrap:wrap;gap:1.4rem 2.4rem;align-items:flex-end;justify-content:space-between}
+.btn{position:relative;display:inline-block;overflow:hidden;font-family:var(--serif);font-size:1.25rem;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;padding:.95rem 2.1rem;border-radius:var(--hand);cursor:pointer;border:1px solid transparent;transition:transform .25s,background .25s,color .25s,box-shadow .25s;transform:rotate(-.6deg)}
+.btn::after{content:"";position:absolute;inset:0;background-image:var(--noise);opacity:.16;pointer-events:none}
+.btn.solid{background:#191815;color:var(--paper);border-color:rgba(216,211,198,.24);box-shadow:0 14px 34px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.06)}
+.btn.solid:hover{transform:rotate(.4deg) translateY(-3px);background:#121110;box-shadow:0 20px 44px rgba(0,0,0,.55)}
+.btn.ghost{background:transparent;color:var(--txt);border:1.5px dashed rgba(216,211,198,.42)}
+.btn.ghost:hover{transform:rotate(-.2deg) translateY(-2px);color:var(--paper);border-style:solid}
+.btn.sm{font-size:1.05rem;padding:.6rem 1.4rem}
+.btn.full{width:100%;text-align:center}
+.tape{position:absolute;width:96px;height:28px;background-image:var(--noise),linear-gradient(105deg,rgba(228,224,213,.5),rgba(198,193,181,.34));background-size:120px,cover;box-shadow:0 2px 7px rgba(0,0,0,.3);clip-path:polygon(3% 14%,97% 0%,100% 80%,0% 100%);pointer-events:none;z-index:5}
+.tape.dim{background-image:var(--noise),linear-gradient(105deg,rgba(64,60,54,.3),rgba(64,60,54,.16));box-shadow:0 1px 4px rgba(0,0,0,.18)}
+
+/* reveal */
+.rev{opacity:0;transform:translateY(26px) rotate(var(--r,0deg));transition:opacity .85s ease var(--d,0s),transform .85s cubic-bezier(.2,.7,.2,1) var(--d,0s)}
+.rev.in{opacity:1;transform:translateY(0) rotate(var(--r,0deg))}
+
+/* ============ NAV ============ */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;gap:2.2rem;padding:.85rem clamp(1rem,4vw,3rem);background:rgba(31,30,27,.82);backdrop-filter:blur(7px);border-bottom:1px solid var(--line);transition:box-shadow .3s,background .3s}
+.nav.scrolled{background:rgba(25,24,22,.95);box-shadow:0 16px 44px rgba(0,0,0,.5)}
+.brand{font-family:var(--serif);font-size:1.55rem;color:var(--paper);text-decoration:none;transform:rotate(-1.6deg);display:flex;align-items:center;gap:.5rem;white-space:nowrap}
+.brand svg{width:16px;height:16px;transform:rotate(12deg)}
+.nav-links{display:flex;gap:1.8rem;margin-left:auto}
+.nav-links a{color:var(--txt);text-decoration:none;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;position:relative;padding:.35rem 0}
+.nav-links a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:8px;background:url(var(--squig)) left center/100% 8px no-repeat;transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.nav-links a:hover{color:var(--paper)}
+.nav-links a:hover::after{transform:scaleX(1)}
+.nav-phone{font-size:.8rem;color:var(--mut);text-decoration:none;letter-spacing:.06em;white-space:nowrap}
+.nav-phone:hover{color:var(--paper)}
+.cart-btn{display:flex;align-items:center;gap:.55rem;background:#191815;color:var(--paper);border:1px solid rgba(216,211,198,.25);border-radius:var(--hand);padding:.55rem 1.25rem;font-family:var(--serif);font-size:1.05rem;cursor:pointer;box-shadow:0 8px 22px rgba(0,0,0,.4);transition:transform .25s,background .25s}
+.cart-btn:hover{transform:translateY(-2px) rotate(-.6deg);background:#121110}
+#cartCount{min-width:22px;height:22px;border-radius:50%;background:var(--paper);color:#191814;font-size:.72rem;font-weight:700;display:grid;place-items:center;padding:0 5px;transform:scale(0);transition:transform .25s}
+#cartCount.on{transform:scale(1)}
+#cartCount.pulse{animation:pulse .4s}
+@keyframes pulse{0%{transform:scale(1)}40%{transform:scale(1.55)}100%{transform:scale(1)}}
+.burger{display:none;width:44px;height:38px;background:none;border:none;cursor:pointer;position:relative;z-index:1200}
+.burger span{position:absolute;left:8px;right:8px;height:2px;background:var(--paper);transition:.3s}
+.burger span:nth-child(1){top:10px}.burger span:nth-child(2){top:18px}.burger span:nth-child(3){top:26px}
+body.mopen .burger span:nth-child(1){top:18px;transform:rotate(45deg)}
+body.mopen .burger span:nth-child(2){opacity:0}
+body.mopen .burger span:nth-child(3){top:18px;transform:rotate(-45deg)}
+.mmenu{position:fixed;inset:0;background:rgba(23,22,20,.97);z-index:1100;display:flex;flex-direction:column;justify-content:center;gap:1.2rem;padding:2rem;opacity:0;pointer-events:none;transition:opacity .35s}
+body.mopen .mmenu{opacity:1;pointer-events:auto}
+.mmenu a{font-family:var(--serif);font-size:clamp(2.4rem,10vw,3.4rem);color:var(--paper);text-decoration:none;display:inline-block}
+.mmenu a:nth-child(1){transform:rotate(-1.4deg)}
+.mmenu a:nth-child(2){transform:rotate(.8deg) translateX(1.4rem)}
+.mmenu a:nth-child(3){transform:rotate(-.6deg) translateX(.4rem)}
+.mmenu p{margin-top:2rem;color:var(--mut);font-size:.85rem;letter-spacing:.08em}
+
+/* ============ HERO ============ */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;padding:8.5rem clamp(1.1rem,4.5vw,4.5rem) 5rem;overflow:hidden}
+.ghost{position:absolute;right:-3%;bottom:-5%;font-family:var(--serif);font-size:clamp(9rem,25vw,23rem);line-height:1;color:transparent;-webkit-text-stroke:1px rgba(216,211,198,.07);transform:rotate(-3deg);pointer-events:none;user-select:none;z-index:0}
+.side-note{position:absolute;left:1.4rem;top:50%;transform:translateY(-50%) rotate(180deg);writing-mode:vertical-rl;letter-spacing:.42em;font-size:.66rem;text-transform:uppercase;color:var(--mut);z-index:2}
+.hero-in{position:relative;z-index:2;max-width:62%}
+.hero-in .kicker{display:flex;align-items:center;gap:.7rem}
+.hero-in .kicker::before{content:"";width:44px;height:2px;background:var(--mut);transform:rotate(-2deg)}
+.logo-hero{font-size:clamp(2.7rem,5.8vw,4.8rem);line-height:1;color:var(--paper);transform:rotate(-2.2deg);display:inline-flex;align-items:center;gap:.6rem}
+.logo-hero .mark{width:.62em;height:.62em;flex:none;animation:spin 14s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.slogan{font-size:clamp(3rem,8.6vw,7.2rem);line-height:.98;margin:1.6rem 0 2.4rem}
+.slogan span{display:block}
+.slogan .l1{transform:rotate(-1.5deg);color:var(--paper)}
+.slogan .l2{transform:rotate(.7deg) translateX(1.2%);color:transparent;-webkit-text-stroke:2px rgba(216,211,198,.72)}
+@supports not (-webkit-text-stroke:1px black){.slogan .l2{color:var(--mut)}}
+.slogan .l3{transform:rotate(-.8deg) translateX(4%);color:var(--paper)}
+.hero-cta{display:flex;gap:1.1rem;flex-wrap:wrap;align-items:center}
+.hero-note{margin-top:1.8rem;font-family:var(--serif);font-size:1.15rem;color:var(--mut);transform:rotate(-1.4deg);display:inline-block;border-bottom:1.5px dashed rgba(143,140,130,.5);padding-bottom:2px}
+.hero-photo{position:absolute;right:-2.5%;top:7%;width:min(540px,45vw);z-index:3}
+.hero-photo figure{position:relative;background:#1c1b18;padding:12px 12px 14px;border-radius:6px 24px 8px 28px/24px 8px 28px 10px;box-shadow:0 36px 90px rgba(0,0,0,.62),0 4px 14px rgba(0,0,0,.5);transform:rotate(1.6deg);overflow:hidden}
+.hero-photo svg.scene{width:100%;height:auto}
+.hero-photo .tape{top:-10px;left:36px;transform:rotate(-42deg)}
+.hero-photo .tape.t2{left:auto;right:40px;transform:rotate(38deg)}
+.hero-photo figcaption{font-family:var(--serif);font-size:1.05rem;color:var(--mut);padding:.7rem .4rem 0;transform:rotate(-1deg);text-align:right}
+
+/* ============ MARQUEE ============ */
+.mq{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(0,0,0,.16);overflow:hidden;position:relative}
+.mq-track{display:flex;width:max-content;animation:mq 30s linear infinite}
+.mq-set{display:flex;align-items:center;gap:2.6rem;padding:.9rem 2.6rem .9rem 0;font-family:var(--serif);font-size:1.5rem;letter-spacing:.1em;color:var(--txt);white-space:nowrap}
+.mq-set i{font-style:normal;color:var(--mut);font-size:1.05rem}
+.mq-set .ol{color:transparent;-webkit-text-stroke:1px rgba(205,201,190,.6)}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* ============ MENU ============ */
+.tabs{display:flex;gap:.7rem;flex-wrap:wrap;align-items:center}
+.tab{font-family:var(--serif);font-size:1.1rem;background:transparent;color:var(--txt);border:1.5px solid rgba(216,211,198,.3);border-radius:var(--hand);padding:.5rem 1.3rem;cursor:pointer;transition:.25s;transform:rotate(-.5deg)}
+.tab:nth-child(even){transform:rotate(.7deg)}
+.tab:hover{color:var(--paper);border-color:rgba(216,211,198,.6)}
+.tab.act{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.menu-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(14px,2vw,26px);margin-top:3.4rem;grid-auto-flow:dense}
+.span3{grid-column:span 3}.span4{grid-column:span 4}.span5{grid-column:span 5}
+.up{margin-top:-34px}.dn{margin-top:30px}
+.card{position:relative;display:flex;flex-direction:column;padding:1.35rem 1.35rem 1.5rem;min-height:340px}
+.card.paper{background:var(--paper);color:var(--ink);border-radius:14px 5px 18px 7px/7px 18px 5px 14px;box-shadow:0 22px 50px rgba(0,0,0,.42),inset 0 0 40px rgba(120,112,96,.16)}
+.card.paper::after{content:"";position:absolute;inset:0;background-image:var(--noise);mix-blend-mode:multiply;opacity:.2;border-radius:inherit;pointer-events:none}
+.card.dark{background:#201f1c;color:var(--paper);border:1.5px solid rgba(216,211,198,.2);border-radius:5px 16px 6px 18px/18px 6px 16px 5px;box-shadow:0 22px 50px rgba(0,0,0,.45)}
+.card.dark::after{content:"";position:absolute;inset:0;background-image:var(--noise);mix-blend-mode:overlay;opacity:.18;border-radius:inherit;pointer-events:none}
+.card.torn{clip-path:var(--torn);padding:2rem 1.6rem 2.4rem}
+.card.hide{display:none}
+.illus{height:176px;display:flex;align-items:center;justify-content:center;margin-bottom:1.1rem;position:relative;z-index:1}
+.illus svg{height:100%;width:auto}
+.illus.ph{border-radius:12px 4px 14px 5px/5px 14px 4px 12px;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(216,211,198,.14),0 10px 26px rgba(0,0,0,.35);align-self:stretch}
+.illus.ph svg{width:100%;height:100%}
+.card h3{font-size:1.55rem;line-height:1.15;transform:rotate(-.4deg)}
+.card p{font-size:.8rem;opacity:.72;margin-top:.35rem}
+.c-foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;padding-top:1.2rem;position:relative;z-index:1}
+.price{font-family:var(--serif);font-size:1.25rem;border:1.6px solid currentColor;border-radius:47% 53% 51% 49%/55% 47% 53% 45%;padding:.3em .72em;transform:rotate(-4deg);display:inline-block;opacity:.92}
+.add{width:38px;height:38px;border-radius:50% 46% 52% 48%/48% 52% 47% 53%;border:1.6px solid currentColor;background:transparent;color:inherit;font-family:var(--serif);font-size:1.35rem;line-height:1;cursor:pointer;display:grid;place-items:center;transition:.2s;transform:rotate(3deg)}
+.add:hover{background:var(--ink);color:var(--paper);transform:rotate(0deg) scale(1.08)}
+.card.dark .add:hover{background:var(--paper);color:var(--ink)}
+.card .tape{top:-12px;left:-22px;transform:rotate(-38deg)}
+.card .tape.t2{left:auto;right:-18px;top:auto;bottom:-10px;transform:rotate(24deg)}
+.promo{background:#d9d2c2;color:var(--ink);align-items:flex-start;justify-content:center;text-align:left;gap:.6rem}
+.promo .big{font-family:var(--serif);font-size:1.9rem;line-height:1.2;transform:rotate(-1.4deg)}
+.promo small{font-size:.72rem;opacity:.7;max-width:26ch}
+.menu-note{margin-top:2.6rem;font-family:var(--serif);font-size:1.15rem;color:var(--mut);transform:rotate(-.6deg)}
+
+/* ============ LOCATION ============ */
+.loc-wrap{display:grid;grid-template-columns:1.12fr .88fr;gap:clamp(2.2rem,5vw,4.5rem);align-items:center;margin-top:3rem}
+.map-tilt{transform:rotate(-.7deg);filter:drop-shadow(0 30px 54px rgba(0,0,0,.5))}
+.map-card{position:relative;clip-path:var(--torn);background:var(--paper);padding:22px 18px 14px}
+.map-card::after{content:"";position:absolute;inset:0;background-image:var(--noise);mix-blend-mode:multiply;opacity:.22;pointer-events:none}
+.map-card .tape{top:2px;left:26px;transform:rotate(-40deg)}
+.map-card .tape.t2{left:auto;right:30px;transform:rotate(36deg)}
+.map-card svg{width:100%;height:auto}
+.loc-info .addr{font-family:var(--serif);font-size:clamp(1.6rem,3.2vw,2.3rem);line-height:1.25;color:var(--paper);margin:.4rem 0 1.1rem;transform:rotate(-.5deg)}
+.badge{display:inline-flex;align-items:center;gap:.6rem;font-size:.8rem;letter-spacing:.08em;border:1.5px solid rgba(216,211,198,.3);border-radius:var(--hand);padding:.45rem 1.15rem;color:var(--txt);margin-bottom:1.8rem}
+.badge .dot{width:9px;height:9px;border-radius:50%;background:var(--mut);flex:none}
+.badge.is-open{color:var(--paper);border-color:rgba(216,211,198,.55)}
+.badge.is-open .dot{background:var(--paper);animation:pulse2 1.8s infinite}
+@keyframes pulse2{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(216,211,198,.35)}50%{opacity:.55;box-shadow:0 0 0 7px rgba(216,211,198,0)}}
+.hours{margin:0 0 1.8rem;max-width:460px}
+.hrow{display:flex;justify-content:space-between;gap:1rem;padding:.6rem 0;border-bottom:1px dotted rgba(216,211,198,.28);font-size:.92rem}
+.hrow span:last-child{font-family:var(--serif);font-size:1.15rem;color:var(--paper)}
+.phone{display:inline-block;font-family:var(--serif);font-size:clamp(1.7rem,3.6vw,2.4rem);color:var(--paper);text-decoration:none;transform:rotate(-.8deg);border-bottom:2px solid rgba(216,211,198,.3);transition:.25s}
+.phone:hover{border-color:var(--paper)}
+.loc-note{font-size:.88rem;color:var(--mut);margin:1.1rem 0 1.8rem;max-width:44ch}
+.loc-cta{display:flex;gap:1rem;flex-wrap:wrap}
+
+/* ============ ABOUT / HUMAN TOUCH ============ */
+.about{background:transparent}
+.about-wrap{position:relative;transform:rotate(-.35deg);filter:drop-shadow(0 34px 60px rgba(0,0,0,.55))}
+.about-sheet{position:relative;clip-path:var(--torn);background:var(--panel);padding:clamp(3rem,6vw,5.5rem) clamp(1.4rem,5vw,5rem)}
+.about-sheet::before{content:"";position:absolute;inset:0;background-image:var(--noise);mix-blend-mode:overlay;opacity:.2;pointer-events:none}
+.brush{position:absolute;top:6%;left:-6%;width:70%;max-width:760px;opacity:.9;pointer-events:none;transform:rotate(-2deg)}
+.about-grid{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2.5rem,6vw,5rem);align-items:center;z-index:1}
+.quote{font-family:var(--serif);font-size:clamp(1.6rem,3.4vw,2.5rem);line-height:1.35;color:var(--paper);transform:rotate(-.6deg)}
+.about-copy p{font-size:.92rem;color:var(--txt);margin:1.6rem 0 0;max-width:52ch;opacity:.9}
+.sig{margin-top:2.2rem;display:inline-block;transform:rotate(-2deg)}
+.sig b{display:block;font-family:var(--serif);font-weight:400;font-size:1.7rem;color:var(--paper)}
+.sig b::after{content:"";display:block;height:8px;width:78%;background:url(var(--squig)) left center/100% 8px no-repeat;margin-top:2px}
+.sig small{font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mut)}
+.about-stage{position:relative;padding:1rem .4rem 2.6rem}
+.band-card{position:relative;background:var(--paper);padding:1.2rem 1.2rem .9rem;transform:rotate(1.5deg);border-radius:16px 6px 18px 8px/8px 18px 6px 16px;box-shadow:0 26px 56px rgba(0,0,0,.5)}
+.band-card::after{content:"";position:absolute;inset:0;background-image:var(--noise);mix-blend-mode:multiply;opacity:.22;border-radius:inherit;pointer-events:none}
+.band-card .tape{top:-13px;left:50%;margin-left:-48px;transform:rotate(-3deg)}
+.band-card figcaption{font-family:var(--serif);font-size:1rem;color:#5d594f;padding-top:.6rem;transform:rotate(-.6deg);text-align:right}
+.smudge{position:absolute;border-radius:50%;filter:blur(9px);background:rgba(9,8,7,.5);pointer-events:none}
+.smudge.s1{width:170px;height:110px;top:-24px;right:-30px;transform:rotate(14deg)}
+.smudge.s2{width:130px;height:90px;bottom:-16px;left:-34px;transform:rotate(-9deg)}
+.ring{position:absolute;width:120px;height:120px;border:7px solid rgba(12,10,8,.3);border-radius:50% 46% 52% 48%/48% 52% 47% 53%;filter:blur(1px);bottom:-22px;right:6%;transform:rotate(12deg);pointer-events:none}
+.ring::after{content:"";position:absolute;inset:7px;border:2px solid rgba(12,10,8,.18);border-radius:50% 52% 48% 54%/52% 48% 54% 46%}
+.stamp{position:absolute;width:172px;height:172px;left:-38px;bottom:-34px;color:#b4aea0;opacity:.85;transform:rotate(-9deg);pointer-events:none;filter:drop-shadow(0 4px 8px rgba(0,0,0,.4))}
+.scoff{margin-top:2.2rem;font-family:var(--serif);font-size:1.15rem;color:var(--mut);transform:rotate(1.4deg);display:inline-block}
+.scoff::before{content:"*";font-size:1.5em;vertical-align:-.1em;margin-right:.2em}
+
+/* ============ FOOTER ============ */
+.foot{background:#171613;border-top:1px solid var(--line);padding:3.6rem clamp(1.1rem,4.5vw,4.5rem) 2rem;position:relative}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr auto;gap:2.4rem;align-items:start}
+.foot .brand{font-size:1.9rem}
+.foot-tag{font-size:.8rem;color:var(--mut);margin-top:.7rem;max-width:32ch}
+.foot h4{font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--mut);margin-bottom:1rem;font-family:var(--sans);font-weight:600}
+.foot-links{list-style:none;display:grid;gap:.55rem}
+.foot-links a{color:var(--txt);text-decoration:none;font-size:.9rem}
+.foot-links a:hover{color:var(--paper)}
+.socials{display:flex;gap:.8rem}
+.soc{width:42px;height:42px;border:1.5px solid rgba(216,211,198,.24);border-radius:48% 52% 50% 50%/52% 48% 52% 48%;display:grid;place-items:center;color:var(--txt);transition:.25s;transform:rotate(-2deg)}
+.soc:nth-child(even){transform:rotate(2.5deg)}
+.soc:hover{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.soc svg{width:19px;height:19px}
+.foot-bot{margin-top:3rem;padding-top:1.6rem;border-top:1px dotted rgba(216,211,198,.18);display:flex;flex-wrap:wrap;gap:1rem 2rem;justify-content:space-between;align-items:center;font-size:.74rem;color:#6f6c63}
+.est{font-family:var(--serif);font-size:1rem;border:1.4px solid rgba(176,172,160,.5);color:#a8a496;padding:.2em .8em;border-radius:var(--hand);transform:rotate(-2.4deg)}
+.top-link{color:var(--mut);text-decoration:none}
+.top-link:hover{color:var(--paper)}
+
+/* ============ SHEET (CART) ============ */
+.scrim{position:fixed;inset:0;background:rgba(12,11,10,.62);opacity:0;pointer-events:none;transition:opacity .35s;z-index:1200;backdrop-filter:blur(2px)}
+.sheet{position:fixed;top:0;right:0;height:100%;width:min(440px,100%);background:#22211d;z-index:1300;transform:translateX(103%);transition:transform .45s cubic-bezier(.2,.8,.2,1);border-left:1px solid var(--line);display:flex;flex-direction:column;box-shadow:-30px 0 70px rgba(0,0,0,.5)}
+.sheet::before{content:"";position:absolute;inset:0;background-image:var(--noise);opacity:.2;mix-blend-mode:overlay;pointer-events:none}
+body.sheet-open .scrim{opacity:1;pointer-events:auto}
+body.sheet-open .sheet{transform:none}
+.sheet-head{display:flex;align-items:center;justify-content:space-between;padding:1.3rem 1.5rem;border-bottom:1px dashed rgba(216,211,198,.22)}
+.sheet-head h3{font-size:1.7rem;color:var(--paper);transform:rotate(-.8deg)}
+.x{width:38px;height:38px;border-radius:50% 46% 52% 48%/48% 52% 47% 53%;border:1.4px solid rgba(216,211,198,.4);background:transparent;color:var(--paper);font-size:1.3rem;cursor:pointer;line-height:1;transition:.2s}
+.x:hover{background:var(--paper);color:var(--ink)}
+.sheet-body{flex:1;overflow-y:auto;padding:1.4rem 1.5rem 2rem}
+.line{padding:.9rem 0;border-bottom:1px dotted rgba(216,211,198,.22)}
+.l-main{display:flex;justify-content:space-between;gap:1rem;align-items:baseline}
+.l-name{font-family:var(--serif);font-size:1.15rem;color:var(--paper)}
+.l-price{font-size:.9rem;color:var(--txt);white-space:nowrap}
+.l-ctrl{display:flex;gap:.55rem;align-items:center;margin-top:.5rem}
+.l-ctrl button{width:30px;height:30px;border-radius:50%;border:1.3px solid rgba(216,211,198,.4);background:transparent;color:var(--paper);font-size:1rem;cursor:pointer;line-height:1;transition:.2s}
+.l-ctrl button:hover{background:var(--paper);color:var(--ink)}
+.l-ctrl span{min-width:1.6em;text-align:center;font-weight:600}
+.empty{text-align:center;color:var(--mut);font-family:var(--serif);font-size:1.2rem;padding:2.6rem 0;line-height:1.6}
+.total{display:flex;justify-content:space-between;align-items:baseline;padding:1.1rem 0 .4rem;font-size:.9rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mut)}
+.total b{font-family:var(--serif);font-size:1.9rem;color:var(--paper);letter-spacing:0}
+#orderForm{display:grid;gap:1.1rem;margin-top:1.4rem}
+#orderForm label{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--mut);display:grid;gap:.35rem}
+#orderForm input{background:transparent;border:none;border-bottom:1.5px dashed rgba(216,211,198,.32);padding:.55rem 0;color:var(--paper);font:inherit;font-size:1rem;border-radius:0}
+#orderForm input:focus{outline:none;border-bottom:1.5px solid var(--paper)}
+.hint{font-size:.72rem;color:var(--mut);text-align:center}
+.done{text-align:center;padding:2rem 0}
+.done .check{width:86px;height:86px;margin:0 auto 1.2rem}
+.done .check circle{fill:none;stroke:var(--paper);stroke-width:3;stroke-dasharray:215;stroke-dashoffset:215;stroke-linecap:round}
+.done .check path{fill:none;stroke:var(--paper);stroke-width:4;stroke-dasharray:60;stroke-dashoffset:60;stroke-linecap:round;stroke-linejoin:round}
+.done.go .check circle{animation:draw .8s ease forwards}
+.done.go .check path{animation:draw .5s ease .55s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.done h4{font-size:2rem;color:var(--paper);transform:rotate(-1deg)}
+.done p{font-size:.88rem;color:var(--mut);margin-top:.6rem}
+.done #doneSum{color:var(--paper);font-family:var(--serif);font-size:1.25rem}
+.done .btn{margin-top:1.6rem}
+.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,24px);background:#191814;color:var(--paper);border:1px solid rgba(216,211,198,.3);padding:.7rem 1.5rem;border-radius:var(--hand);font-family:var(--serif);font-size:1.1rem;opacity:0;pointer-events:none;transition:.3s;z-index:1400;box-shadow:0 16px 44px rgba(0,0,0,.55)}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* ============ RESPONSIVE ============ */
+@media(max-width:1180px){.side-note{display:none}}
+@media(max-width:1020px){
+  .hero-in{max-width:100%}
+  .hero-photo{position:relative;right:auto;top:auto;width:min(560px,100%);margin:3.4rem auto 0;transform:rotate(1.1deg)}
+  .hero-photo figure{transform:rotate(-1deg)}
+  .menu-grid{grid-template-columns:repeat(2,1fr)}
+  .span3,.span4,.span5{grid-column:auto}
+  .promo{grid-column:1/-1}
+  .up,.dn{margin-top:0}
+  .loc-wrap{grid-template-columns:1fr}
+  .about-grid{grid-template-columns:1fr}
+  .about-stage{max-width:520px;margin:0 auto}
+}
+@media(max-width:860px){
+  .nav-links,.nav-phone{display:none}
+  .burger{display:block;margin-left:auto}
+  .cart-btn{margin-left:auto}
+  .burger{margin-left:0}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:620px){
+  .menu-grid{grid-template-columns:1fr}
+  .card{min-height:0}
+  .slogan{line-height:1.02}
+  .foot-grid{grid-template-columns:1fr}
+  .stamp{width:140px;height:140px;left:-8px;bottom:-26px}
+  .ring{width:96px;height:96px;right:0}
+  .ghost{font-size:34vw}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+  .rev{opacity:1;transform:rotate(var(--r,0deg))}
+}
+</style>
+</head>
+<body>
+
+<!-- ======= SVG DEFS (shared) ======= -->
+<svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+  <defs>
+    <linearGradient id="hGold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#d0a35e"/><stop offset=".35" stop-color="#a87b3e"/><stop offset=".7" stop-color="#77542a"/><stop offset="1" stop-color="#54391b"/>
+    </linearGradient>
+    <linearGradient id="hChoc" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2a1e13"/><stop offset=".5" stop-color="#160f09"/><stop offset="1" stop-color="#0b0705"/>
+    </linearGradient>
+    <radialGradient id="hLight" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="rgba(96,92,84,.55)"/><stop offset="1" stop-color="rgba(96,92,84,0)"/>
+    </radialGradient>
+    <radialGradient id="hVign" cx=".5" cy=".44" r=".75">
+      <stop offset="0" stop-color="rgba(8,8,7,0)"/><stop offset=".62" stop-color="rgba(8,8,7,0)"/><stop offset="1" stop-color="rgba(8,8,7,.82)"/>
+    </radialGradient>
+    <filter id="wob" x="-8%" y="-8%" width="116%" height="116%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="4" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="5"/>
+    </filter>
+    <filter id="wobSoft" x="-12%" y="-12%" width="124%" height="124%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.024" numOctaves="3" seed="9" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="8"/>
+    </filter>
+    <filter id="hRough" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.014" numOctaves="3" seed="7" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="6"/>
+    </filter>
+    <filter id="gGrain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0.9 0.9 0.9 0 0"/>
+    </filter>
+    <!-- hero churro geometry -->
+    <path id="heroChurroPath" d="M486 56 C552 168 500 342 418 494 C372 584 344 648 336 706 C331 742 276 748 268 712 C256 628 306 486 358 344 C402 230 402 104 436 60 C450 38 472 36 486 56 Z"/>
+    <clipPath id="hClip"><use href="#heroChurroPath"/></clipPath>
+    <path id="mDipPath" d="M128 12 C150 52 122 108 94 150 C86 160 72 160 68 150 C60 116 80 62 104 16 C110 4 124 2 128 12 Z"/>
+    <clipPath id="mClip"><use href="#mDipPath"/></clipPath>
+    <!-- photo: dipped churro -->
+    <symbol id="mChurroDip" viewBox="0 0 200 190">
+      <rect width="200" height="190" fill="#252420"/>
+      <ellipse cx="86" cy="52" rx="110" ry="80" fill="url(#hLight)"/>
+      <ellipse cx="96" cy="156" rx="68" ry="14" fill="url(#hChoc)"/>
+      <use href="#mDipPath" fill="url(#hGold)"/>
+      <g fill="none" stroke="#38240f" stroke-width="2" opacity=".55" stroke-linecap="round">
+        <path d="M120 16 C134 56 112 108 90 146"/><path d="M108 14 C120 56 100 110 78 146"/><path d="M100 14 C106 56 92 110 72 142"/>
+      </g>
+      <g fill="none" stroke="#e0bf7e" stroke-width="1.2" opacity=".45" stroke-linecap="round">
+        <path d="M124 16 C138 56 116 108 94 146"/><path d="M112 14 C124 56 104 110 82 146"/>
+      </g>
+      <g clip-path="url(#mClip)">
+        <path d="M30 116 C52 110 70 120 90 114 C94 106 97 100 100 96 C103 102 104 108 106 114 C122 110 138 118 165 113 L165 200 L30 200 Z" fill="url(#hChoc)"/>
+        <path d="M102 122 C98 134 94 144 93 152" fill="none" stroke="#8a6337" stroke-width="1.6" opacity=".5"/>
+      </g>
+      <g fill="#e9d2a0" opacity=".5"><circle cx="114" cy="40" r="1.5"/><circle cx="102" cy="62" r="1.4"/><circle cx="116" cy="82" r="1.5"/><circle cx="108" cy="100" r="1.2"/></g>
+      <ellipse cx="116" cy="13" rx="10" ry="6" transform="rotate(-16 116 13)" fill="#8a6130" stroke="#38240f" stroke-width="1.5"/>
+      <path d="M44 154 C70 148 120 148 152 154" fill="none" stroke="#6b4a2a" stroke-width="2" opacity=".5"/>
+      <rect width="200" height="190" filter="url(#gGrain)" opacity=".28"/>
+      <rect width="200" height="190" fill="url(#hVign)"/>
+    </symbol>
+    <!-- photo: plain churro -->
+    <symbol id="mChurroPlain" viewBox="0 0 200 190">
+      <rect width="200" height="190" fill="#26251f"/>
+      <ellipse cx="118" cy="60" rx="120" ry="90" fill="url(#hLight)"/>
+      <g transform="rotate(26 90 92)">
+        <path d="M84 18 C108 22 116 46 114 82 C112 120 104 152 88 156 C72 160 62 134 66 96 C70 60 64 22 84 18 Z" fill="url(#hGold)"/>
+        <g fill="none" stroke="#38240f" stroke-width="2" opacity=".55" stroke-linecap="round">
+          <path d="M78 24 C92 58 90 108 82 148"/><path d="M94 24 C104 60 102 110 94 148"/><path d="M87 24 C97 60 96 110 88 148" opacity=".7"/>
+        </g>
+        <g fill="none" stroke="#e0bf7e" stroke-width="1.2" opacity=".45" stroke-linecap="round">
+          <path d="M82 24 C95 58 94 108 86 147"/>
+        </g>
+        <g fill="#e9d2a0" opacity=".5">
+          <circle cx="92" cy="40" r="1.5"/><circle cx="84" cy="60" r="1.4"/><circle cx="96" cy="80" r="1.5"/><circle cx="84" cy="100" r="1.4"/><circle cx="94" cy="120" r="1.5"/><circle cx="82" cy="138" r="1.3"/>
+        </g>
+        <ellipse cx="92" cy="19" rx="9" ry="5.5" transform="rotate(-14 92 19)" fill="#8a6130" stroke="#38240f" stroke-width="1.4"/>
+      </g>
+      <g fill="#e6e1d4" opacity=".55"><rect x="156" y="140" width="4" height="4" transform="rotate(20 158 142)"/><rect x="168" y="126" width="3" height="3" transform="rotate(-14 169 127)"/><rect x="36" y="152" width="3.4" height="3.4" transform="rotate(30 37 153)"/><rect x="52" y="164" width="3" height="3"/></g>
+      <rect width="200" height="190" filter="url(#gGrain)" opacity=".26"/>
+      <rect width="200" height="190" fill="url(#hVign)"/>
+    </symbol>
+    <!-- sketches (currentColor) -->
+    <symbol id="skChurro" viewBox="0 0 200 230">
+      <g fill="none" stroke="currentColor" stroke-linecap="round">
+        <g filter="url(#wob)" stroke-width="3.4">
+          <path d="M72 22 C60 84 62 158 80 214"/><path d="M128 22 C140 84 138 158 120 214"/>
+          <path d="M72 22 C88 12 112 12 128 22"/><path d="M80 214 C92 224 108 224 120 214"/>
+        </g>
+        <g filter="url(#wob)" stroke-width="2" opacity=".55">
+          <path d="M88 28 C78 90 80 152 92 206"/><path d="M100 26 C96 90 96 154 100 210"/><path d="M112 28 C122 90 120 152 108 206"/>
+        </g>
+        <ellipse cx="100" cy="19" rx="15" ry="6.5" filter="url(#wob)" stroke-width="2.4"/>
+      </g>
+    </symbol>
+    <symbol id="skDip" viewBox="0 0 200 200">
+      <g fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" filter="url(#wob)">
+        <path d="M44 96 C44 142 66 164 100 164 C134 164 156 142 156 96"/>
+        <path d="M40 96 C60 88 84 102 104 96 C124 90 140 100 160 94"/>
+        <path d="M150 28 C160 58 138 94 122 128"/><path d="M162 34 C170 60 150 94 134 126"/>
+        <path d="M72 104 c3 5 3 9 0 11 c-3 -2 -3 -6 0 -11" fill="currentColor" stroke="none"/>
+        <path d="M138 102 c3 5 3 9 0 11 c-3 -2 -3 -6 0 -11" fill="currentColor" stroke="none"/>
+      </g>
+    </symbol>
+    <symbol id="skCrossed" viewBox="0 0 220 210">
+      <g fill="none" stroke="currentColor" stroke-linecap="round">
+        <g filter="url(#wob)" stroke-width="3.2">
+          <path d="M38 176 C70 164 150 164 182 176"/><path d="M44 183 C78 193 146 193 176 183"/>
+        </g>
+        <g filter="url(#wob)" stroke-width="3" transform="rotate(-24 110 120)">
+          <path d="M96 44 C88 84 90 130 100 168"/><path d="M124 44 C132 84 130 130 120 168"/>
+          <path d="M96 44 C104 38 116 38 124 44"/><path d="M100 168 C106 174 114 174 120 168"/>
+          <path d="M110 48 C106 88 106 128 110 164" stroke-width="1.8" opacity=".55"/>
+        </g>
+        <g filter="url(#wob)" stroke-width="3" transform="translate(16 8) rotate(20 110 122)">
+          <path d="M96 44 C88 84 90 130 100 168"/><path d="M124 44 C132 84 130 130 120 168"/>
+          <path d="M96 44 C104 38 116 38 124 44"/><path d="M100 168 C106 174 114 174 120 168"/>
+          <path d="M110 48 C106 88 106 128 110 164" stroke-width="1.8" opacity=".55"/>
+        </g>
+      </g>
+    </symbol>
+    <symbol id="skGlass" viewBox="0 0 200 220">
+      <g fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" filter="url(#wob)">
+        <path d="M64 46 L74 176 C76 186 124 186 126 176 L136 46"/>
+        <path d="M60 46 C84 38 116 38 140 46"/>
+        <path d="M68 92 C90 86 112 96 132 90" opacity=".7"/>
+        <path d="M150 14 C158 48 132 92 120 128"/><path d="M162 18 C168 50 144 94 132 126"/>
+        <path d="M84 32 c6 -8 12 -5 8 -15" stroke-width="2.2" opacity=".5"/>
+        <path d="M108 32 c6 -8 12 -5 8 -15" stroke-width="2.2" opacity=".5"/>
+      </g>
+    </symbol>
+    <symbol id="skLemon" viewBox="0 0 200 210">
+      <g fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" filter="url(#wob)">
+        <path d="M62 62 L70 178 C72 187 128 187 130 178 L138 62"/>
+        <path d="M58 62 C84 54 116 54 142 62"/>
+        <path d="M96 24 L88 152"/>
+        <path d="M66 106 C90 100 112 110 134 104" opacity=".7"/>
+        <circle cx="146" cy="96" r="16"/>
+        <circle cx="146" cy="96" r="9" opacity=".45"/>
+        <path d="M146 82 V110 M132 96 H160 M137 87 L155 105 M155 87 L137 105" stroke-width="1.6" opacity=".45"/>
+        <circle cx="88" cy="150" r="2" opacity=".5" fill="currentColor" stroke="none"/>
+        <circle cx="112" cy="140" r="1.8" opacity=".5" fill="currentColor" stroke="none"/>
+      </g>
+    </symbol>
+    <symbol id="skCocoa" viewBox="0 0 200 200">
+      <g fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" filter="url(#wob)">
+        <path d="M56 92 C56 134 74 154 100 154 C126 154 144 134 144 92"/>
+        <path d="M50 92 C72 84 128 84 150 92"/>
+        <path d="M52 100 C74 94 126 94 148 100" opacity=".5"/>
+        <path d="M144 100 c18 2 18 26 0 28"/>
+        <path d="M84 68 c8 -10 14 -6 10 -20" stroke-width="2.4" opacity=".6"/>
+        <path d="M106 68 c8 -10 14 -6 10 -20" stroke-width="2.4" opacity=".6"/>
+        <path d="M95 60 c6 -8 10 -4 8 -14" stroke-width="2" opacity=".4"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ======= NAV ======= -->
+<nav class="nav" id="nav">
+  <a class="brand" href="#top" aria-label="Churros Band">
+    Churros&nbsp;Band
+    <svg viewBox="0 0 24 24" fill="none" stroke="#cdc9be" stroke-width="1.6" stroke-linecap="round"><path d="M12 2 l1.8 6 6 1.4 -5 4 1.6 6 -4.4 -3.6 -4.4 3.6 1.6 -6 -5 -4 6 -1.4 z" transform="rotate(8 12 12)"/></svg>
+  </a>
+  <div class="nav-links">
+    <a href="#menu">Меню</a>
+    <a href="#place">Адрес</a>
+    <a href="#about">О нас</a>
+  </div>
+  <a class="nav-phone" href="tel:+78002103117">+7 (800) 210-31-17</a>
+  <button class="cart-btn" id="openSheet" aria-label="Открыть смету">
+    Смета <span id="cartCount">0</span>
+  </button>
+  <button class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="mmenu" id="mmenu">
+  <a href="#menu">Меню</a>
+  <a href="#place">Адрес</a>
+  <a href="#about">О нас</a>
+  <p>ул. Родниковая, 1Б · 12:00 — 23:00 · 800 210-31-17</p>
+</div>
+
+<!-- ======= HERO ======= -->
+<header class="hero" id="top">
+  <div class="ghost" aria-hidden="true">churros</div>
+  <p class="side-note" aria-hidden="true">горячий кафе · с одного голоса · ул. родниковая</p>
+
+  <div class="hero-in">
+    <p class="kicker rev">кафейня-гурманитария · Ульяновск</p>
+    <h1 class="logo-hero rev" style="--d:.08s">
+      Churros&nbsp;Band
+      <svg class="mark" viewBox="0 0 24 24" fill="none" stroke="#cdc9be" stroke-width="1.5" stroke-linecap="round"><path d="M12 2 l1.8 6 6 1.4 -5 4 1.6 6 -4.4 -3.6 -4.4 3.6 1.6 -6 -5 -4 6 -1.4 z"/></svg>
+    </h1>
+    <p class="slogan">
+      <span class="l1 rev" style="--d:.16s">ГОРЯЧО.</span>
+      <span class="l2 rev" style="--d:.26s">ВКУСНО.</span>
+      <span class="l3 rev" style="--d:.36s">МУЗЫКАЛЬНО.</span>
+    </p>
+    <div class="hero-cta rev" style="--d:.5s">
+      <a class="btn solid" href="#place">Найти нас</a>
+      <a class="btn ghost" href="#menu">Смотреть меню</a>
+    </div>
+    <p class="hero-note rev" style="--d:.62s">«если пахнет корицей — мы рядом»</p>
+  </div>
+
+  <figure class="hero-photo rev" style="--d:.3s">
+    <svg class="scene" viewBox="0 0 760 860" role="img" aria-label="Макросъёмка churros в тёмном шоколаде">
+      <g filter="url(#hRough)">
+        <rect width="760" height="860" fill="#262522"/>
+        <ellipse cx="330" cy="180" rx="360" ry="270" fill="url(#hLight)"/>
+        <rect y="655" width="760" height="205" fill="#1d1c19"/>
+        <path d="M0 655 H760" stroke="#3a3833" stroke-width="2" opacity=".55"/>
+        <path d="M20 700 C110 672 260 664 390 676 C500 686 590 704 640 728 C590 766 420 788 260 780 C130 773 0 748 20 700 Z" fill="url(#hChoc)"/>
+        <path d="M90 706 C200 688 380 688 500 708" fill="none" stroke="#6b4a2a" stroke-width="3" opacity=".45"/>
+        <g clip-path="url(#hClip)">
+          <use href="#heroChurroPath" fill="url(#hGold)"/>
+          <path d="M486 56 C552 168 500 342 418 494 C372 584 344 648 336 706" fill="none" stroke="#3c2812" stroke-width="9" opacity=".3"/>
+          <g fill="none" stroke="#38240f" stroke-width="3.5" opacity=".55" stroke-linecap="round">
+            <path d="M472 58 C520 172 472 342 396 494 C354 582 330 648 322 702"/>
+            <path d="M452 52 C492 170 448 340 372 492 C332 580 310 646 302 700"/>
+            <path d="M432 54 C462 172 424 342 350 490 C312 578 292 644 284 694"/>
+          </g>
+          <g fill="none" stroke="#e0bf7e" stroke-width="2" opacity=".45" stroke-linecap="round">
+            <path d="M478 60 C526 172 480 344 404 496 C362 584 338 648 330 702"/>
+            <path d="M458 54 C498 172 456 342 380 494"/>
+          </g>
+          <g fill="#e9d2a0" opacity=".5">
+            <circle cx="462" cy="120" r="2"/><circle cx="438" cy="150" r="1.8"/><circle cx="470" cy="190" r="2"/><circle cx="430" cy="205" r="1.8"/>
+            <circle cx="450" cy="245" r="2"/><circle cx="416" cy="275" r="1.8"/><circle cx="440" cy="315" r="2"/><circle cx="404" cy="345" r="1.8"/>
+            <circle cx="420" cy="390" r="2"/><circle cx="386" cy="425" r="1.8"/><circle cx="398" cy="465" r="2"/><circle cx="370" cy="500" r="1.8"/>
+          </g>
+          <path d="M200 566 C246 556 282 570 322 560 C330 544 334 532 340 522 C347 533 349 547 352 560 C386 552 424 566 458 556 C480 550 502 558 520 562 L560 566 L560 900 L200 900 Z" fill="url(#hChoc)"/>
+          <path d="M360 586 C346 630 330 664 324 700" fill="none" stroke="#8a6337" stroke-width="2.5" opacity=".5"/>
+          <path d="M300 580 C292 620 284 656 282 690" fill="none" stroke="#8a6337" stroke-width="2" opacity=".3"/>
+          <g fill="#caa06a" opacity=".25"><circle cx="330" cy="600" r="1.6"/><circle cx="310" cy="640" r="1.4"/><circle cx="345" cy="630" r="1.5"/></g>
+        </g>
+        <path d="M436 60 C402 104 402 230 358 344 C306 486 256 628 268 712" fill="none" stroke="#e8cd94" stroke-width="2.5" opacity=".4"/>
+        <ellipse cx="461" cy="50" rx="15" ry="9" transform="rotate(-18 461 50)" fill="#8a6130" stroke="#38240f" stroke-width="2"/>
+        <ellipse cx="461" cy="50" rx="7" ry="4" transform="rotate(-18 461 50)" fill="#5e401d"/>
+        <ellipse cx="330" cy="692" rx="30" ry="7" fill="#7a5a34" opacity=".3"/>
+        <g fill="#d8d3c6" opacity=".5"><rect x="500" y="820" width="5" height="5" transform="rotate(18 502 822)"/><rect x="560" y="800" width="4" height="4" transform="rotate(-12 561 801)"/><rect x="470" y="845" width="3.4" height="3.4"/><rect x="600" y="830" width="4" height="4" transform="rotate(24 601 831)"/><rect x="180" y="830" width="4" height="4" transform="rotate(-20 181 831)"/><rect x="120" y="806" width="3" height="3"/></g>
+      </g>
+      <rect width="760" height="860" filter="url(#gGrain)" opacity=".3"/>
+      <rect width="760" height="860" fill="url(#hVign)"/>
+    </svg>
+    <div>
+      <span class="tape"></span><span class="tape t2"></span>
+      <figcaption>churro №7 — эталонное хруст</figcaption>
+    </div>
+  </figure>
+</header>
+
+<!-- ======= MARQUEE ======= -->
+<div class="mq" aria-hidden="true">
+  <div class="mq-track">
+    <div class="mq-set">
+      <span>ГОРЯЧО</span><i>✺</i><span class="ol">ВКУСНО</span><i>✺</i><span>МУЗЫКАЛЬНО</span><i>✺</i>
+      <span class="ol">ГОРЯЧО</span><i>✺</i><span>ВКУСНО</span><i>✺</i><span class="ol">МУЗЫКАЛЬНО</span><i>✺</i>
+    </div>
+    <div class="mq-set">
+      <span>ГОРЯЧО</span><i>✺</i><span class="ol">ВКУСНО</span><i>✺</i><span>МУЗЫКАЛЬНО</span><i>✺</i>
+      <span class="ol">ГОРЯЧО</span><i>✺</i><span>ВКУСНО</span><i>✺</i><span class="ol">МУЗЫКАЛЬНО</span><i>✺</i>
+    </div>
+  </div>
+</div>
+
+<!-- ======= MENU ======= -->
+<section class="sec" id="menu">
+  <div class="sec-head rev">
+    <div>
+      <p class="kicker">испаритель открыт · 40 минут назад вытянуто</p>
+      <h2 class="h2">Меню</h2>
+    </div>
+    <nav class="tabs" aria-label="Фильтр меню">
+      <button class="tab act" data-f="all">Все</button>
+      <button class="tab" data-f="churros">Чурросы</button>
+      <button class="tab" data-f="dips">Соусы</button>
+      <button class="tab" data-f="drinks">Напитки</button>
+    </nav>
+    <button class="btn solid sm" id="openSheet2">Собрать смету</button>
+  </div>
+
+  <div class="menu-grid" id="grid">
+    <article class="card paper span4 rev" style="--r:-1.1deg" data-cat="churros" data-id="choc" data-name="Чуррос «Тёмный шоколад»" data-price="220">
+      <div class="illus ph"><svg viewBox="0 0 200 190" preserveAspectRatio="xMidYMid slice"><use href="#mChurroDip"/></svg></div>
+      <h3>Чуррос «Тёмный шоколад»</h3>
+      <p>полых, тёмный шоколад 70%, карамельный кранч</p>
+      <div class="c-foot"><span class="price">220 ₽</span><button class="add" aria-label="Добавить в смету">+</button></div>
+    </article>
+
+    <article class="card dark span4 up rev" style="--r:.8deg;--d:.08s" data-cat="churros" data-id="cana" data-name="Чуррос канинальный" data-price="180">
+      <span class="tape"></span>
+      <div class="illus"><svg class="sk" viewBox="0 0 200 230" preserveAspectRatio="xMidYMid meet"><use href="#skChurro"/></svg></div>
+      <h3>Чуррос канинальный</h3>
+      <p>классика: корица, ваниль, тонкая панировка</p>
+      <div class="c-foot"><span class="price">180 ₽</span><button class="add" aria-label="Добавить в смету">+</button></div>
+    </article>
+
+    <article class="card paper span4 dn rev" style="--r:-.7deg;--d:.14s" data-cat="dips" data-id="dulce" data-name="Dulce de leche" data-price="90">
+      <div class="illus"><svg class="sk" viewBox="0 0 200 200" preserveAspectRatio="xMidYMid meet"><use href="#skDip"/></svg></div>
+      <h3>Dulce de leche</h3>
+      <p>медленно баримок, тёплый, в пирожке-стакане</p>
+      <div class="c-foot"><span class="price">90 ₽</span><button class="add" aria-label="Добавить в смету">+</button></div>
+    </article>
+
+    <article class="card paper torn span3 rev" style="--r:-2.1deg">
+      <span class="tape dim"></span>
+      <span class="big">4 churro —<br>мороженое<br>в подарок</span>
+      <small>на испарителе, пока мороженое лежит. смягчайте гордость.</small>
+    </article>
+
+    <article class="card dark span5 rev" style="--r:.9deg;--d:.06s" data-cat="churros" data-id="sal" data-name="Чуррос «Соль-карамель»" data-price="240">
+      <span class="tape"></span><span class="tape t2"></span>
+      <div class="illus"><svg class="sk" viewBox="0 0 220 210" preserveAspectRatio="xMidYMid meet"><use href="#skCrossed"/></svg></div>
+      <h3>Чуррос «Соль-карамель»</h3>
+      <p>драже в рафинада Орловской соли, двойной хруст</p>
+      <div class="c-foot"><span class="price">240 ₽</span><button class="add" aria-label="Добавить в смету">+</button></div>
+    </article>
+
+    <article class="card paper span4 rev" style="--r:-.9deg;--d:.1s" data-cat="churros" data-id="classic" data-name="Чуррос «Классика»" data-price="170">
+      <div class="illus ph"><svg viewBox="0 0 200 190" preserveAspectRatio="xMidYMid slice"><use href="#mChurroPlain"/></svg></div>
+      <h3>Чуррос «Классика»</h3>
+      <p>освоенный рецепт, какао-пудра, сшивальщик нежный</p>
+      <div class="c-foot"><span class="price">170 ₽</span><button class="add" aria-label="Добавить в смету">+</button></div>
+    </article>
+
+    <article class="card dark span4 rev" style="--r:1deg" data-cat="dips" data-id="cocoa" data-name="Какао 70%" data-price="130">
+      <div class="illus"><svg class="sk" viewBox="0 0 200 200" preserveAspectRatio="xMidYMid meet"><use href="#skCocoa"/></svg></div>
+      <h3>Какао 70%</h3>
+      <p>ручная обжарка, сироп какао, лёгкий пар</p>
+      <div class="c-foot"><span class="price">130 ₽</span><button class="add" aria-label="Добавить в смету">+</button></div>
+    </article>
+
+    <article class="card paper span4 dn rev" style="--r:-.7deg;--d:.07s" data-cat="drinks" data-id="latte" data-name="Латте ванильный" data-price="150">
+      <div class="illus"><svg class="sk" viewBox="0 0 200 220" preserveAspectRatio="xMidYMid meet"><use href="#skGlass"/></svg></div>
+      <h3>Латте ванильный</h3>
+      <p>эспрессо, ванильный сироп, пенка-шапочка</p>
+      <div class="c-foot"><span class="price">150 ₽</span><button class="add" aria-label="Добавить в смету">+</button></div>
+    </article>
+
+    <article class="card dark span4 dn rev" style="--r:.8deg;--d:.12s" data-cat="drinks" data-id="lemon" data-name="Лимонад «Мята и мёд»" data-price="110">
+      <span class="tape"></span>
+      <div class="illus"><svg class="sk" viewBox="0 0 200 210" preserveAspectRatio="xMidYMid meet"><use href="#skLemon"/></svg></div>
+      <h3>Лимонад «Мята и мёд»</h3>
+      <p>мятная ветка поднята, лимон на бокал</p>
+      <div class="c-foot"><span class="price">110 ₽</span><button class="add" aria-label="Добавить в смету">+</button></div>
+    </article>
+  </div>
+
+  <p class="menu-note rev">— всё горячо, всего 2 минуты на готовку. если чего-то нет — скажите, досчитаем.</p>
+</section>
+
+<!-- ======= LOCATION ======= -->
+<section class="sec" id="place">
+  <div class="sec-head rev">
+    <div>
+      <p class="kicker">как добраться</p>
+      <h2 class="h2">Место встречи</h2>
+    </div>
+    <p style="max-width:34ch;font-size:.88rem;color:var(--mut);transform:rotate(-.6deg)">стрелка на карте — мы. рядом дом №5 — нас никто не помнит. шумите громче.</p>
+  </div>
+
+  <div class="loc-wrap">
+    <div class="map-tilt rev">
+      <div class="map-card">
+        <span class="tape dim" style="background-image:linear-gradient(105deg,rgba(70,66,60,.3),rgba(70,66,60,.16))"></span>
+        <span class="tape dim t2" style="background-image:linear-gradient(105deg,rgba(70,66,60,.3),rgba(70,66,60,.16))"></span>
+        <svg viewBox="0 0 800 520" role="img" aria-label="Карта прохождения к Churros Band">
+          <g filter="url(#wob)">
+            <path d="M-10 438 C120 408 220 452 360 432 C500 412 620 452 810 424 L810 530 L-10 530 Z" fill="#b7b3a9" stroke="#8d8a81" stroke-width="2"/>
+            <g stroke="#96938a" fill="none" stroke-linecap="round">
+              <path d="M-10 120 C160 112 420 128 810 116" stroke-width="9"/>
+              <path d="M-10 250 C180 244 480 258 810 246" stroke-width="13"/>
+              <path d="M-10 356 C200 350 500 362 810 352" stroke-width="9"/>
+              <path d="M150 -10 C146 140 156 340 148 530" stroke-width="9"/>
+              <path d="M320 -10 C326 150 314 360 322 530" stroke-width="11"/>
+              <path d="M500 -10 C496 160 506 360 498 530" stroke-width="9"/>
+              <path d="M660 -10 C664 150 656 340 662 530" stroke-width="9"/>
+            </g>
+            <g stroke="#8d8a81" fill="none" stroke-width="1.4" opacity=".55">
+              <rect x="168" y="140" width="134" height="86"/><rect x="346" y="140" width="134" height="86"/>
+              <rect x="528" y="140" width="112" height="86"/><rect x="168" y="272" width="134" height="62"/>
+              <rect x="346" y="272" width="134" height="62"/><rect x="528" y="272" width="112" height="62"/>
+            </g>
+            <ellipse cx="722" cy="66" rx="66" ry="42" fill="none" stroke="#8d8a81" stroke-width="1.6" stroke-dasharray="4 6"/>
+            <g fill="#8d8a81"><circle cx="700" cy="56" r="3"/><circle cx="726" cy="72" r="3"/><circle cx="742" cy="52" r="3"/><circle cx="712" cy="82" r="3"/></g>
+            <g stroke="#8d8a81" stroke-width="1.6" opacity=".6">
+              <path d="M228 60 h10 M233 55 v10"/><path d="M420 320 h10 M425 315 v10"/><path d="M600 200 h10 M605 195 v10"/><path d="M76 300 h10 M81 295 v10"/>
+            </g>
+          </g>
+          <g font-family="Inter, sans-serif" fill="#6d6a62">
+            <text x="56" y="58" font-size="24" font-family="Neucha, cursive" fill="#5d594f" transform="rotate(-1.5 56 58)">Ульяновск</text>
+            <text x="338" y="238" font-size="12" letter-spacing="2">ул. Родниковая</text>
+            <text x="470" y="108" font-size="11" letter-spacing="2">ул. Мира</text>
+            <text x="470" y="470" font-size="12" letter-spacing="2" fill="#7b786f">набережная</text>
+            <text x="700" y="120" font-size="10" letter-spacing="2">сад</text>
+          </g>
+          <g>
+            <circle cx="390" cy="246" r="9" fill="none" stroke="#2a2925" stroke-width="2" opacity=".5">
+              <animate attributeName="r" values="8;30" dur="2.2s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values=".5;0" dur="2.2s" repeatCount="indefinite"/>
+            </circle>
+            <ellipse cx="390" cy="294" rx="22" ry="6" fill="#1c1c1c" opacity=".18"/>
+            <g filter="url(#wob)">
+              <path d="M390 246 c-20 0 -33 14 -33 33 c0 24 33 58 33 58 s33 -34 33 -58 c0 -19 -13 -33 -33 -33 z" fill="#2a2925" stroke="#14130f" stroke-width="1.5"/>
+              <circle cx="390" cy="279" r="12" fill="#d8d3c6"/>
+              <circle cx="390" cy="279" r="4" fill="#2a2925"/>
+            </g>
+            <g transform="rotate(-4 520 190)">
+              <rect x="446" y="170" width="152" height="40" rx="7" fill="#2b2a26"/>
+              <text x="522" y="196" text-anchor="middle" font-size="19" font-family="Neucha, cursive" fill="#d8d3c6">Churros Band</text>
+              <path d="M452 210 L402 240" stroke="#2b2a26" stroke-width="2"/>
+            </g>
+          </g>
+          <g transform="translate(740 70)">
+            <circle r="18" fill="none" stroke="#6d6a62" stroke-width="1.6"/>
+            <path d="M0 10 L0 -10 M-4 -4 L0 -10 L4 -4" stroke="#6d6a62" stroke-width="1.6" fill="none"/>
+            <text y="32" text-anchor="middle" font-size="10" font-family="Inter" fill="#6d6a62">С</text>
+          </g>
+          <g stroke="#6d6a62" stroke-width="2">
+            <path d="M60 486 H130" /><path d="M60 482 V490 M130 482 V490"/>
+            <text x="66" y="476" font-size="10" font-family="Inter" fill="#6d6a62" stroke="none">100 м</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <div class="loc-info rev" style="--d:.12s">
+      <p class="kicker">адрес</p>
+      <h3 class="addr">Ульяновск,<br>ул. Родниковая, 1Б</h3>
+      <span class="badge" id="openBadge"><i class="dot"></i>Проверяем часы…</span>
+      <div class="hours">
+        <div class="hrow"><span>Пн — Чт</span><span>12:00 — 23:00</span></div>
+        <div class="hrow"><span>Пт — Сб</span><span>12:00 — 00:00</span></div>
+        <div class="hrow"><span>Вс</span><span>13:00 — 22:00</span></div>
+      </div>
+      <a class="phone" href="tel:+78002103117">+7 (800) 210-31-17</a>
+      <p class="loc-note">Метрополитен «Ульяновск» — 5 минут пешком, дальше велодорожка прямо до чёрной двери с оконными окнами. Работает только телефон — пустые рукоятки выключают глаза.</p>
+      <div class="loc-cta">
+        <a class="btn solid sm" href="https://maps.google.com/?q=%D0%A3%D0%BB%D1%8C%D0%B0%D0%B9%D0%BD%D1%81%D0%BA%2C%20%D1%83%D0%BB.%20%D0%A0%D0%BE%D0%B4%D0%BD%D0%B8%D0%BA%D0%BE%D0%B2%D0%B0%D1%8F%201%D0%91" target="_blank" rel="noopener">Построить маршрут</a>
+        <a class="btn ghost sm" href="tel:+78002103117">Позвонить</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= ABOUT / HUMAN TOUCH ======= -->
+<section class="sec about" id="about">
+  <div class="about-wrap rev">
+    <div class="about-sheet">
+      <svg class="brush" viewBox="0 0 600 300" aria-hidden="true">
+        <ellipse cx="300" cy="150" rx="285" ry="118" fill="#d8d3c6" opacity=".06" filter="url(#wobSoft)"/>
+        <ellipse cx="310" cy="146" rx="255" ry="100" fill="none" stroke="#d8d3c6" stroke-width="10" opacity=".05" filter="url(#wobSoft)"/>
+      </svg>
+      <div class="about-grid">
+        <div class="about-copy">
+          <p class="kicker">о нас, смазать не успев</p>
+          <p class="quote">«Единственное правило у нас: churro должен хрустеть так, чтобы услышать, как отвечает уличная музыка. Остальное — шепотом и по аккуратности».</p>
+          <p>Мы варим сорок порций в день, рецепт берём только из семейного архива и больше никого не останавливаем. Занавес опускаем в точности в закрытие — не раньше, даже если кто-то вносит в глаз дирижёры.</p>
+          <div class="sig">
+            <b>— Марина</b>
+            <small>со-основательница, мастерица панировки</small>
+          </div>
+          <p class="scoff">осторожно: на раскат 22:00, напоминание не будет</p>
+        </div>
+        <div class="about-stage">
+          <div class="smudge s1"></div>
+          <div class="smudge s2"></div>
+          <figure class="band-card">
+            <span class="tape dim"></span>
+            <svg viewBox="0 0 260 190" fill="none" stroke="#2b2a26" stroke-width="3" stroke-linecap="round">
+              <g filter="url(#wob)">
+                <path d="M16 168 H244" opacity=".6"/>
+                <circle cx="42" cy="58" r="12"/>
+                <path d="M42 70 L40 152"/>
+                <path d="M42 82 L58 46"/>
+                <path d="M58 152 V36"/>
+                <circle cx="58" cy="32" r="6"/>
+                <path d="M40 152 L30 168 M40 152 L52 168"/>
+                <circle cx="132" cy="50" r="12"/>
+                <path d="M132 62 L126 152"/>
+                <ellipse cx="112" cy="118" rx="26" ry="17" transform="rotate(-20 112 118)"/>
+                <path d="M132 108 L164 84"/>
+                <path d="M126 84 L146 104"/>
+                <path d="M126 152 L116 168 M126 152 L140 168"/>
+                <circle cx="206" cy="48" r="11"/>
+                <path d="M206 60 L202 152"/>
+                <path d="M196 84 L182 124"/>
+                <path d="M212 82 L228 118"/>
+                <ellipse cx="176" cy="140" rx="24" ry="9"/>
+                <path d="M152 140 V158 C152 166 200 166 200 158 V140"/>
+                <ellipse cx="222" cy="132" rx="14" ry="6"/>
+                <path d="M202 152 L194 168 M202 152 L212 168"/>
+              </g>
+            </svg>
+            <figcaption>наша «мостик» эстрады, рисунок с вечеринки 19.12</figcaption>
+          </figure>
+          <div class="ring"></div>
+          <svg class="stamp" viewBox="0 0 220 220" aria-label="Est. 2023">
+            <defs><path id="stampArc" d="M110 110 m -76 0 a76 76 0 1 1 152 0 a76 76 0 1 1 -152 0"/></defs>
+            <g filter="url(#wobSoft)" fill="none" stroke="currentColor">
+              <circle cx="110" cy="110" r="100" stroke-width="3"/>
+              <circle cx="110" cy="110" r="64" stroke-width="1.6" stroke-dasharray="2 6"/>
+            </g>
+            <text font-family="Inter, sans-serif" font-size="14.5" letter-spacing="2.5" fill="currentColor">
+              <textPath href="#stampArc">CHURROS BAND • EST. 2023 • ГОРЯЧАЯ КУЛЬТУРА •</textPath>
+            </text>
+            <path d="M110 76 l9.5 21 23 1 -18 14 6.5 22 -21 -12.5 -21 12.5 6.5 -22 -18 -14 23 -1 z" fill="currentColor" filter="url(#wobSoft)"/>
+            <text x="110" y="164" text-anchor="middle" font-size="14" font-family="Inter, sans-serif" letter-spacing="3" fill="currentColor">EST. 2023</text>
+          </svg>
+          <p class="scoff" style="margin-top:3.4rem;transform:rotate(-2deg)">так мы и хотим — смазать, не стереть</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= FOOTER ======= -->
+<footer class="foot">
+  <div class="foot-grid">
+    <div>
+      <a class="brand" href="#top">Churros&nbsp;Band</a>
+      <p class="foot-tag">горячий кафе в Ульяновске. churro, шоколад и тихие вечера на раскат.</p>
+    </div>
+    <div>
+      <h4>Навигация</h4>
+      <ul class="foot-links">
+        <li><a href="#menu">Меню</a></li>
+        <li><a href="#place">Адрес и часы</a></li>
+        <li><a href="#about">О нас</a></li>
+        <li><a href="tel:+78002103117">Позвонить</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Мы в сети</h4>
+      <div class="socials">
+        <a class="soc" href="https://t.me/churrosband" target="_blank" rel="noopener" aria-label="Телеграм">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M21 4 L3 11.5 l5.5 2.2 L10.5 20 l3 -4.5 5.5 3.5 z"/><path d="M8.5 13.7 L18 7" /></svg>
+        </a>
+        <a class="soc" href="https://vk.com/churrosband" target="_blank" rel="noopener" aria-label="ВКонтакте">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7 c0 7 4 10 7 10 v-3.2 c1.8.5 3.2 1.6 4 3.2 h3 c-1.2-2.6-3-4-4.6-4.6 1.7-.7 3.6-2.5 4.6-4.9 h-3 c-.8 1.9-2.3 3.3-4 3.7 V7 z"/></svg>
+        </a>
+        <a class="soc" href="https://instagram.com/churrosband" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a class="soc" href="https://youtube.com/@churrosband" target="_blank" rel="noopener" aria-label="YouTube">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="2.5" y="6" width="19" height="12" rx="3.5"/><path d="M10.5 9.5 L15.5 12 L10.5 14.5 z" fill="currentColor" stroke="none"/></svg>
+        </a>
+      </div>
+    </div>
+    <div>
+      <span class="est">EST. 2023</span>
+    </div>
+  </div>
+  <div class="foot-bot">
+    <span>© <span id="yr">2025</span> Churros Band · Ульяновск, ул. Родниковая, 1Б</span>
+    <span>Все права защищены. Никаких автовокзалов, никаких тёплых подков.</span>
+    <a class="top-link" href="#top">наверх ↑</a>
+  </div>
+</footer>
+
+<!-- ======= CART SHEET ======= -->
+<div class="scrim" id="scrim"></div>
+<aside class="sheet" id="sheet" aria-hidden="true" aria-label="Смета заявки">
+  <div class="sheet-head">
+    <h3>Смета заявки</h3>
+    <button class="x" id="sheetClose" aria-label="Закрыть">×</button>
+  </div>
+  <div class="sheet-body">
+    <div class="lines" id="lines"></div>
+    <div class="total" id="totalRow" hidden><span>Итого</span><b id="total">0 ₽</b></div>
+    <form id="orderForm" novalidate>
+      <label>Имя<input id="fName" type="text" placeholder="как к вам" autocomplete="name"></label>
+      <label>Телефон<input id="fPhone" type="tel" placeholder="+7 ___ ___-__-__" autocomplete="tel"></label>
+      <button class="btn solid full" type="submit">Оставить заявку</button>
+      <p class="hint">ждём звонок или берём заказ к выдаче — без очереди и талкуна</p>
+    </form>
+    <div class="done" id="done" hidden>
+      <svg class="check" viewBox="0 0 80 80"><circle cx="40" cy="40" r="34"/><path d="M26 41 l10 10 l18 -20"/></svg>
+      <h4>Чуррос будуть!</h4>
+      <p id="doneSum"></p>
+      <p>свяжемся за пять минут. заодно уточним, чем подсыпать какао, — но уже не обижайтесь.</p>
+      <button class="btn ghost sm" id="again">Новая смета</button>
+    </div>
+  </div>
+</aside>
+
+<div class="toast" id="toast">Добавлено в смету</div>
+
+<script>
+(function(){
+  "use strict";
+  const $  = s => document.querySelector(s);
+  const $$ = s => Array.from(document.querySelectorAll(s));
+  const fmt = n => n + " ₽";
+
+  /* ---------- nav ---------- */
+  const nav = $("#nav");
+  addEventListener("scroll", () => nav.classList.toggle("scrolled", scrollY > 30), {passive:true});
+
+  const burger = $("#burger");
+  burger.addEventListener("click", () => document.body.classList.toggle("mopen"));
+  $$("#mmenu a").forEach(a => a.addEventListener("click", () => document.body.classList.remove("mopen")));
+
+  /* ---------- reveal on scroll ---------- */
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, {threshold:.12, rootMargin:"0px 0px -6% 0px"});
+  $$(".rev").forEach(el => io.observe(el));
+
+  /* ---------- menu filter ---------- */
+  $$(".tab").forEach(tab => tab.addEventListener("click", () => {
+    $$(".tab").forEach(t => t.classList.toggle("act", t === tab));
+    const f = tab.dataset.f;
+    $$("#grid .card").forEach(c => {
+      if (!c.dataset.id) { c.classList.toggle("hide", f !== "all"); return; }
+      c.classList.toggle("hide", f !== "all" && c.dataset.cat !== f);
+    });
+  }));
+
+  /* ---------- open now ---------- */
+  const sched = [[13,22],[12,23],[12,23],[12,23],[12,23],[12,24],[12,24]]; // 0=Sun
+  function updBadge(){
+    const n = new Date(), d = n.getDay(), h = n.getHours() + n.getMinutes()/60;
+    const o = sched[d][0], c = sched[d][1], pad = v => String(v%24).padStart(2,"0");
+    const el = $("#openBadge"); if(!el) return;
+    if (h >= o && h < c){
+      el.innerHTML = '<i class="dot"></i>Открыто · до ' + pad(c) + ':00';
+      el.classList.add("is-open");
+    } else {
+      let txt;
+      if (h < o) txt = "откроемся сегодня в " + pad(o) + ":00";
+      else { const nx = sched[(d+1)%7][0]; txt = "откроемся завтра в " + pad(nx) + ":00"; }
+      el.innerHTML = '<i class="dot"></i>Закрыто · ' + txt;
+      el.classList.remove("is-open");
+    }
+  }
+  updBadge(); setInterval(updBadge, 30000);
+
+  /* ---------- cart / order sheet ---------- */
+  const cart = new Map();
+  const sheet = $("#sheet"), scrim = $("#scrim");
+  const linesEl = $("#lines"), totalRow = $("#totalRow"), totalEl = $("#total");
+  const form = $("#orderForm"), done = $("#done");
+  const cartCount = $("#cartCount");
+  let toastT;
+
+  function toast(msg){
+    const t = $("#toast"); t.textContent = msg; t.classList.add("show");
+    clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove("show"), 1700);
+  }
+
+  function render(){
+    let html = "", count = 0, total = 0;
+    cart.forEach(v => {
+      count += v.qty; total += v.qty * v.price;
+      html += '<div class="line" data-id="'+v.id+'">'
+        + '<div class="l-main"><span class="l-name">'+v.name+'</span><span class="l-price">'+fmt(v.price*v.qty)+'</span></div>'
+        + '<div class="l-ctrl"><button data-a="dec" aria-label="меньше">−</button><span>'+v.qty+'</span>'
+        + '<button data-a="inc" aria-label="больше">+</button><button data-a="del" aria-label="убрать">×</button></div></div>';
+    });
+    linesEl.innerHTML = html || '<p class="empty">Пока пусто.<br>Добавьте что-нибудь горячее.</p>';
+    totalRow.hidden = count === 0;
+    totalEl.textContent = fmt(total);
+    cartCount.textContent = count;
+    cartCount.classList.toggle("on", count > 0);
+  }
+
+  $$(".add").forEach(btn => btn.addEventListener("click", () => {
+    const card = btn.closest("[data-id]");
+    const id = card.dataset.id;
+    const cur = cart.get(id);
+    cart.set(id, { id, name: card.dataset.name, price: +card.dataset.price, qty: (cur ? cur.qty : 0) + 1 });
+    render();
+    cartCount.classList.remove("pulse"); void cartCount.offsetWidth; cartCount.classList.add("pulse");
+    toast("Добавлено: " + card.dataset.name);
+  }));
+
+  linesEl.addEventListener("click", e => {
+    const b = e.target.closest("button"); if(!b) return;
+    const id = b.closest(".line").dataset.id;
+    const v = cart.get(id); if(!v) return;
+    const a = b.dataset.a;
+    if (a === "inc") v.qty++;
+    if (a === "dec") { v.qty--; if (v.qty < 1) cart.delete(id); }
+    if (a === "del") cart.delete(id);
+    render();
+  });
+
+  function openSheet(o){
+    document.body.classList.toggle("sheet-open", o);
+    sheet.setAttribute("aria-hidden", !o);
+    if (o) document.body.classList.remove("mopen");
+  }
+  $("#openSheet").addEventListener("click", () => openSheet(true));
+  $("#openSheet2").addEventListener("click", () => openSheet(true));
+  $("#sheetClose").addEventListener("click", () => openSheet(false));
+  scrim.addEventListener("click", () => openSheet(false));
+  addEventListener("keydown", e => {
+    if (e.key !== "Escape") return;
+    openSheet(false); document.body.classList.remove("mopen");
+  });
+
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+    let count = 0, total = 0;
+    cart.forEach(v => { count += v.qty; total += v.qty * v.price; });
+    if (!count){ toast("Смета пустая — добавьте что-нибудь"); return; }
+    const name = $("#fName").value.trim();
+    const phone = $("#fPhone").value.replace(/\D/g,"");
+    if (name.length < 2 || phone.length < 6){ toast("Пожалуйста, укажите имя и телефон"); return; }
+    $("#doneSum").textContent = count + (count === 1 ? " позиция · " : " позиции · ") + fmt(total) + " · " + name.split(" ")[0] + ", ждём!";
+    form.hidden = true; totalRow.hidden = true; linesEl.style.display = "none";
+    done.hidden = false; done.classList.remove("go"); void done.offsetWidth; done.classList.add("go");
+    cart.clear(); render();
+    linesEl.style.display = "";
+  });
+
+  $("#again").addEventListener("click", () => {
+    done.hidden = true; done.classList.remove("go");
+    form.hidden = false; form.reset(); render();
+  });
+
+  /* ---------- misc ---------- */
+  $("#yr").textContent = new Date().getFullYear();
+  render();
+})();
+</script>
+</body>
+</html>
